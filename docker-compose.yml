@@ -1,0 +1,12 @@
+services:
+  web:
+    image: acme-support:latest
+    ports:
+      - "8090:8090"
+    environment:
+      # If unset, a unique instance id is generated and stored in ./labdata/instance_id.txt.
+      - APP_SEED=${APP_SEED-}
+      - LAB_DEBUG=${LAB_DEBUG-true}
+    volumes:
+      - ./labdata:/data
+    restart: unless-stopped

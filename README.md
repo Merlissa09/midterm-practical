@@ -14,14 +14,37 @@ Install these before you start:
 
 Follow these steps in order.
 
+---
+
+### Using Docker Desktop (Recommended)
+
+For easier management, you can use Docker Desktop to load images and run containers instead of the terminal. Docker Desktop provides a graphical interface to:
+
+- Start/stop containers
+- View logs
+- Manage images
+- Monitor resource usage
+
+**To use Docker Desktop:**
+
+1. Open Docker Desktop from the Start Menu (Windows) or Applications (macOS).
+2. Wait until Docker Desktop shows it is running.
+3. Use the "Images" tab to load your `.tar` file (either `acme-support.tar` or `windows_vuln_lab.tar`).
+4. Use the "Containers" tab to start the lab container using the compose file.
+
+## You can still use the terminal for advanced commands, but Docker Desktop makes it easier to manage and troubleshoot containers.
+
 ### 1) Get the Lab Files
 
-You will receive two files from your instructor:
+You will receive the following files from your instructor:
 
-- `acme-support.tar` — the lab Docker image
+- `acme-support.tar` — the lab Docker image (built on macOS)
+- `windows_vuln_lab.tar` — the lab Docker image (built on Windows)
 - `docker-compose.yml` — the container configuration
 
-Place both files in the same folder on your machine (e.g. `acme-lab/`).
+Place all files in the same folder on your machine (e.g. `acme-lab/`).
+
+**Important:** If you encounter issues loading or running `acme-support.tar` (especially on Windows), use `windows_vuln_lab.tar` instead. Some students have reported problems with the macOS image on Windows. To use the Windows version, substitute `windows_vuln_lab.tar` wherever you see `acme-support.tar` in the instructions below.
 
 ### 2) Start Docker Daemon / Docker Engine
 
@@ -73,9 +96,11 @@ From the folder containing your lab files:
 
 ```bash
 docker load -i acme-support.tar
+# If you have issues, try:
+docker load -i windows_vuln_lab.tar
 ```
 
-You should see output like `Loaded image: acme-support:latest`.
+You should see output like `Loaded image: acme-support:latest` or `Loaded image: windows_vuln_lab:latest`.
 
 ### 5) Start the Lab
 
